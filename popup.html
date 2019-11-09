@@ -8,30 +8,34 @@
     <head>
         <title>TTech Random Password Generator</title>
         <style>
-            body {
+            html, body {
                 font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
                 font-size: 100%;
+                width: 250px;
+                height: 200px;
             }
             #status {
                 /* avoid an excessivly wide status text */
                 white-space: pre;
                 text-overflow: ellipsis;
                 overflow: hidden;
-                max-width: 400px;
+                max-width: 600px;
+            }
+            input[type=number]{
+                width: 40px;
             }
         </style>
 
-        <!-- 
-            - Javascript and HTML must be in separate files: see our Content Security
-            - Policy documentation[1] for details and explanation.
-            -
-            - [1]: https://developer.chrome.com/extensions/contentsecuritypolicy
-        -->
+        <script type="text/javascript" src="popup.js"></script>
 
-        <script src ="popup.js"></script>
     </head>
     <body>
-        <div id="status"></div>
-        <img id="image-result" hidden>
+        <h4>TTech Random Password Generator</h4>
+        <input type="number" name="Length" id="len" size="1">Password Length<br>
+        <input type="checkbox" name="LowerCase" id="iL" checked>Lowercase Letters<br>
+        <input type="checkbox" name="UpperCase" id="iUL" checked>Uppercase Letters<br>
+        <input type="checkbox" name="NumbersCase" id="iN" checked>Numbers<br>
+        <input type="checkbox" name="SpecialChars" id="iS" checked>Special Characters<br>
+        <button id="generate">Generate</button>
     </body>
 </html>
