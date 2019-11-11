@@ -115,6 +115,7 @@ function generate_password(plength, incLetters, incUpLetters, incNumbers, incSpe
     final_password = final_password.replace(/,/g, '')
     console.log("Final Password: " + final_password)
     copyToClipboard(final_password)
+    document.getElementById('pass').value = final_password
     return final_password
 
 }
