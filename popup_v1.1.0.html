@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- 
+    This page is shown when thee extension button is clicked, because the "browser_action" field in manifest.json 
+    contains the "default_popup" key with value "popup.html".
+-->
+
+<html>
+    <head>
+        <title>TTech Password Generator</title>
+        <style>
+            html, body {
+                font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+                font-size: 100%;
+                width: 230px;
+                height: 240px;
+            }
+            #status {
+                /* avoid an excessivly wide status text */
+                white-space: pre;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-width: 600px;
+            }
+            input[type=number]{
+                width: 40px;
+            }
+
+            p {
+                font-family: sans-serif;
+                font-size: 11px;
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+            background-color: inherit;
+            float: left;
+            border: 1px solid #ccc;
+            outline: none;
+            cursor: pointer;
+            padding: 4px 16px;
+            transition: 0.3s;
+            font-size: 14px;
+            width: 230px;
+            }
+
+            .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+            background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+            background-color: #ccc;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            }
+
+
+        </style>
+
+        <script type="text/javascript" src="popup_v1.1.0.js"></script>
+
+    </head>
+    <body>
+
+        <h4><center>TTech Password Generator</center></h4>
+        
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Complex')">Complex</button>
+            <button class="tablinks" onclick="openTab(event, 'User')">Memorable</button>
+        </div>
+
+
+        <div id="Complex" class="tabcontent">
+            <input type="number" name="Length" id="len" size="1" value=16>Password Length<br>
+            <input type="checkbox" name="LowerCase" id="iL" checked>Lowercase Letters<br>
+            <input type="checkbox" name="UpperCase" id="iUL" checked>Uppercase Letters<br>
+            <input type="checkbox" name="NumbersCase" id="iN" checked>Numbers<br>
+            <input type="checkbox" name="SpecialChars" id="iS" checked>Special Characters<br>
+            <br>
+            <button id="generate">Generate</button>
+            <br>
+            <p style="margin: 0px"><b>Generated Password</b></p>
+            <input type="text" name="Password" id="pass" size="25"><br>
+        </div>
+
+        <div id="User" class="tabcontent">
+
+            <button id="generate_user">Generate</button>
+            <br>
+            <p style="margin: 0px"><b>Generated Password</b></p>
+            <input type="text" name="User_Password" id="user_pass" size="25"><br>
+
+        </div>
+
+        <p><b>Complex: </b>Random password where you specify constraints</p>
+        <p><b>Memorable:</b> Secure, memorable passwords</p>
+
+        <script>
+            function openTab(evt, passwdType) {
+              var i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("tabcontent");
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+              tablinks = document.getElementsByClassName("tablinks");
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+              }
+              document.getElementById(passwdType).style.display = "block";
+              evt.currentTarget.className += " active";
+            }
+        </script>
+
+    </body>
+</html>
