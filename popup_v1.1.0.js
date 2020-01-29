@@ -14,6 +14,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var link = document.getElementById('openComplex');
+    // onClick's logic below:
+    link.addEventListener('click', function() {
+        openTab("openComplex", "Complex");
+    });
+    link.click()
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var link = document.getElementById('openUser');
+    // onClick's logic below:
+    link.addEventListener('click', function() {
+        openTab("openUser", "User");
+    });
+});
+
 var letters = "abcdefghijklmnopqrstuvwxyz"
 var upperLets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numbers = "1234567890"
@@ -25,6 +42,27 @@ var animals = ["Dog", "Cat", "Kangaroo", "Sheep", "Gorilla", "Bird", "Leopard", 
 var colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Violet", "Tan", "Grey", "Pink", "Cyan", "Magenta", "Bronze", "Brown", "Black", "White"]
 var adj = ["Big", "Small", "Funny", "Scary", "Soft", "Dry", "Tall", "Short", "Huge", "Giant", "Little", "Round", "Fast", "Slow", "Old", "Quick", "Lazy",
                 "Proud", "Angry", "Lucky", "Lazy", "Fierce"]
+
+
+//function openTab(evt, passwdType) {
+function openTab(elementID, passwdType) {
+    var i, tabcontent, tablinks;
+
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    document.getElementById(passwdType).style.display = "block";
+    document.getElementById(elementID).className += " active";
+    //evt.currentTarget.className += " active";
+}
+
 
 function getRandomInt(min, max) {
     //return Math.floor(Math.random() * Math.floor(max));
@@ -167,4 +205,4 @@ function generate_user_password() {
 
 }
 
-//generate_password(16, true, true, true, true)
+
